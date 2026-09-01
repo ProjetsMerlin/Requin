@@ -4,7 +4,7 @@ Requin teste simplement l'API microlink dans le but d'afficher des screensshot d
 
 Voici le lien de mon article qui en parle :
 
-<https://lintermediaire.be/capture-decran-de-plusieurs-site-web>
+<https://lintermediaire.be/capture-decran-de-plusieurs-sites-web>
 
 \
 Et la page web pour vous montrer ce que cela donne : 
