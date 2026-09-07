@@ -106,6 +106,8 @@ const urls = [
   'https://o2max.be',
   'https://offresexclusives.koesio-be.com',
   'https://secufire.be',
+  'https://www.dariolocation.be/fr',
+  //chassart
 ]
 
 const container = document.getElementById('cards')
