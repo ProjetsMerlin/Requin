@@ -1,11 +1,9 @@
-
 async function createSiteCard(url) {
   const card = document.createElement('a')
   card.className = 'requinSite'
   card.href = url
   card.target = '_blank'
   card.rel = 'noopener noreferrer'
-
   card.innerHTML = `
     <div class="requinSite__screenshot-wrap">
       <div class="requinSite__skeleton"></div>
@@ -18,27 +16,26 @@ async function createSiteCard(url) {
       <div class="requinSite__url">${url}</div>
     </div>
   `
-
   try {
     const endpoint = `https://api.microlink.io/?url=${encodeURIComponent(url)}&screenshot=true&meta=true`
     const res = await fetch(endpoint)
     const json = await res.json()
-
+    
     if (json.status !== 'success') {
       throw new Error('Microlink a renvoyé une erreur')
     }
-
+    
     const data = json.data
     const title = data.title || url
     const description = data.description || ''
     const screenshotUrl = data.screenshot?.url || ''
     const faviconUrl = data.logo?.url || data.publisher?.image?.url || ''
-
+    
     card.innerHTML = `
       <div class="requinSite__screenshot-wrap">
         ${screenshotUrl
-          ? `<img class="requinSite__screenshot" src="${screenshotUrl}" alt="Capture d'écran de ${title}" loading="lazy">`
-          : `<div class="requinSite__skeleton"></div>`}
+    ? `<img class="requinSite__screenshot" src="${screenshotUrl}" alt="Capture d'écran de ${title}" loading="lazy">`
+    : `<div class="requinSite__skeleton"></div>`}
       </div>
       <div class="requinSite__body">
         <div class="requinSite__header">
@@ -49,7 +46,8 @@ async function createSiteCard(url) {
         <div class="requinSite__url">${url}</div>
       </div>
     `
-  } catch (err) {
+  }
+  catch (err) {
     card.classList.add('requinSite--error')
     card.innerHTML = `
       <div class="requinSite__screenshot-wrap">
@@ -64,7 +62,6 @@ async function createSiteCard(url) {
       </div>
     `
   }
-
   return card
 }
 
@@ -74,38 +71,44 @@ const urls = [
   'https://cauchie.be',
   'https://ecolestremy.be',
   'https://mancreations.be',
-  'https://astonmartinantwerp.com',
-  'https://baixjardins.be',
+  "https://astonmartinantwerp.com",
   'https://chalets-durbuy.be',
-  'https://chasal.be/foire2026',
-  'https://cqfd-bw.be',
-  'https://dev.setupco.be',
-  'https://emploi.cndg.be',
   'https://lebruncommunication.be',
   'https://lelaitdechimay.be',
   'https://mijnpasfoto.be',
-  'https://racletteparty.be',
   'https://tiny-josephine.com',
+  'https://astonmartinantwerp.com',
   'https://atelier-immobilier.be',
+  'https://baixjardins.be',
   'https://bougard.be',
   'https://bougard.be/sud/fr',
   'https://bymycarprivilege.fr',
   'https://campagne.avocats.be',
+  'https://chalets-durbuy.be',
   'https://charleroi-entreprendre.be',
+  'https://chasal.be/foire2026',
+  'https://cqfd-bw.be',
+  'https://dev.setupco.be',
   'https://dev.setupco.be',
   'https://distriboissons.be',
+  'https://emploi.cndg.be',
   'https://hall-and.be',
   'https://immotoma.be',
   'https://infrastructure-construction.be',
   'https://kmk-africa.com',
+  'https://lebruncommunication.be',
+  'https://lelaitdechimay.be',
   'https://louyet.com',
   'https://louyetcarr.be',
   'https://louyetrent.be',
+  'https://mijnpasfoto.be',
   'https://msgroupe.com',
   'https://notflo.be',
   'https://o2max.be',
   'https://offresexclusives.koesio-be.com',
+  'https://racletteparty.be',
   'https://secufire.be',
+  'https://tiny-josephine.com'
 ]
 
 const container = document.getElementById('cards')
